@@ -1,35 +1,13 @@
 ﻿using DBpractice_02_17;
 
+Product handleProduct = new Product();
 using DbAppContext context = new DbAppContext();
 
-Order newOrder = new Order()
-{
-    OrderDate = DateTime.Now
-};
-context.Orders.Add(newOrder);
-context.SaveChanges();
+Console.WriteLine("Choose shoe:");
+Console.WriteLine("1) Nike air");
+Console.WriteLine("2) Adidas pro");
 
-Product nikeShoes = new Product()
-{
-    Name = "Nike air",
-    Price = 9.99M,
-    OrderId = newOrder.OrderId
-};
+string choice = Console.ReadLine();
 
-context.Products.Add(nikeShoes);
+handleProduct.CreateProductAndOrder(context, choice);
 
-Order secondOrder = new Order()
-{
-    OrderDate = DateTime.Now
-};
-context.Orders.Add(secondOrder);
-context.SaveChanges();
-
-Product adidasShoes = new Product()
-{
-    Name = "Adidas pro",
-    Price = 8.99M,
-    OrderId = secondOrder.OrderId
-};
-context.Products.Add(adidasShoes);
-context.SaveChanges();
